@@ -4,6 +4,9 @@ var max_speed = 12
 var velocity = Vector3.ZERO
 signal hit
 
+func _ready():
+	Global.player = self
+
 func _physics_process(delta):
 	var input_vector = get_input_vector()
 	
