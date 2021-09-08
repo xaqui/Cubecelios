@@ -1,19 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/RigidBody.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Ship3x3x3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/PathFollow.gd" type="Script" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 
 [sub_resource type="BoxShape" id=2]
-
-[sub_resource type="CubeMesh" id=3]
-
-[sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 1, 0.494118, 0, 1 )
-
-[sub_resource type="BoxShape" id=5]
 
 [sub_resource type="Curve3D" id=6]
 _data = {
@@ -39,30 +31,10 @@ transform = Transform( 1, 0, 0, 0, 0.93096, 0.365121, 0, -0.365121, 0.93096, 0, 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.1168, 10.8073 )
 
-[node name="PartHolder" type="Spatial" parent="."]
-transform = Transform( 0.395567, 0.53883, 0.743767, -0.253015, 0.842415, -0.475732, -0.882898, 0, 0.469564, -12.0281, 10.2677, 1.89053 )
-
-[node name="RigidBody" type="RigidBody" parent="PartHolder"]
-transform = Transform( 1, 4.47035e-08, 2.23517e-08, 7.45058e-09, 1, 5.96046e-08, 7.45058e-09, -2.98023e-08, 1, 0, 0, 0 )
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-script = ExtResource( 2 )
-
-[node name="MeshInstance" type="MeshInstance" parent="PartHolder/RigidBody"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
-
-[node name="CollisionShape" type="CollisionShape" parent="PartHolder/RigidBody"]
-shape = SubResource( 5 )
-
 [node name="Path" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.1091, 0 )
 curve = SubResource( 6 )
 
 [node name="PathFollow" type="PathFollow" parent="Path"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.70763, -9.53674e-07, -2.59338 )
-
-[node name="Ship3x3x3" parent="Path/PathFollow" instance=ExtResource( 3 )]
-
-[connection signal="hit" from="Player" to="PartHolder/RigidBody" method="_on_Player_hit"]
+script = ExtResource( 4 )

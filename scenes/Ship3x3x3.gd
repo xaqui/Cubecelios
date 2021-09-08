@@ -8,7 +8,7 @@ var speed = 10
 func _ready():
 	var pos = 0
 	pathf = get_parent()
-	for i in range(PARTS_AMOUNT):
+	for _i in range(PARTS_AMOUNT):
 		add_child(Spatial.new())
 	for holder in get_children():
 		holder.translation.x += pos
@@ -18,3 +18,5 @@ func _ready():
 
 func _physics_process(delta):
 	pathf.offset += delta * speed
+
+	
