@@ -1,18 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scenes/Holder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Ship3x3x3.gd" type="Script" id=2]
 
 [node name="Ship3x3x3" type="Spatial"]
 script = ExtResource( 2 )
-
-[node name="Holder111" type="Spatial" parent="."]
-script = ExtResource( 1 )
-
-[node name="Holder112" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 0, 0 )
-script = ExtResource( 1 )
-
-[node name="Holder110" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0, 0 )
-script = ExtResource( 1 )

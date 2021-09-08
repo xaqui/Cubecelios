@@ -4,7 +4,11 @@ var pos
 var block
 var live = true
 
-func _ready():
+#func _ready():
+#	add_child(load("res://scenes/NormalShipBlock.tscn").instance(), true)
+#	block = get_node("NormalShipBlock")
+
+func spawn_block():
 	add_child(load("res://scenes/NormalShipBlock.tscn").instance(), true)
 	block = get_node("NormalShipBlock")
 
